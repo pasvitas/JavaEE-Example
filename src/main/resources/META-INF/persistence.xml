@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="default">
+
+        <jta-data-source>postgres</jta-data-source>
+
+        <class>ru.pasvitas.lab.model.Cart</class>
+        <class>ru.pasvitas.lab.model.Catalog</class>
+        <class>ru.pasvitas.lab.model.Item</class>
+        <class>ru.pasvitas.lab.model.Order</class>
+        <class>ru.pasvitas.lab.model.User</class>
+
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <properties>
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+            <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
+            <property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>
+            <property name="javax.persistence.schema-generation.scripts.create-target" value="create.sql"/>
+            <property name="javax.persistence.schema-generation.scripts.drop-target" value="drop.sql"/>
+        </properties>
+    </persistence-unit>
+</persistence>
